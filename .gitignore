@@ -1,0 +1,5 @@
+.vscode
+fdf
+obj
+lib/libft/*.a
+lib/mlx/*.a
