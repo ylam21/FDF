@@ -6,7 +6,7 @@
 #    By: omaly <omaly@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/18 19:25:08 by omaly             #+#    #+#              #
-#    Updated: 2025/10/18 19:47:20 by omaly            ###   ########.fr        #
+#    Updated: 2025/10/21 13:14:37 by omaly            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ MLX_LIB = $(MLX_DIR)/libmlx.a $(MLX_DIR)/libmlx_Linux.a
 
 # Compilation and flags
 CC = cc
-CFLAGS = -Wall -Wextra
+CFLAGS = -Wall -Wextra -Werror
 
 # Commands
 RM = rm -rf
