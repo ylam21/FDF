@@ -1,9 +1,9 @@
 ##
 ## Makefile for MiniLibX in /home/boulon/work/c/raytraceur/minilibx
-## 
+##
 ## Made by Olivier Crouzet
 ## Login   <ol@epitech.net>
-## 
+##
 ## Started on  Tue Oct  5 15:56:43 2004 Olivier Crouzet
 ## Last update Tue May 15 15:41:20 2007 Olivier Crouzet
 ##
@@ -63,4 +63,10 @@ show:
 clean	:
 	rm -rf $(OBJ_DIR)/ $(NAME) $(NAME_UNAME) *~ core *.core
 
-.PHONY: all check show clean
+fclean: clean
+	rm -rf $(NAME)
+	rm -rf $(NAME_UNAME)
+
+re: fclean all
+
+.PHONY: all check show clean fclean re

@@ -70,6 +70,7 @@ cat <<EOF
 Usage :
 $0              Auto-configure and make MinilibX
 $0 clean        Execute the clean rule of both Makefile.gen
+$0 fclean       Execute the fclean rule of both Makefile.gen
 EOF
 }
 
@@ -80,6 +81,11 @@ clean(){
 	${MAKE} -f Makefile.gen -C test/ --no-print-directory clean
 }
 
+fclean(){
+	log_info 'Execute "make fclean" from "makefile.gen"'
+	${MAKE} -f Makefile.gen fclean
+}
+
 parse_args(){
 	case "$1" in
 		--help | -h)
@@ -87,6 +93,9 @@ parse_args(){
 			exit 0;;
 		clean)
 			clean
+			exit 0;;
+		fclean)
+			fclean
 			exit 0;;
 		"") return;;
 		*)
@@ -111,7 +120,7 @@ main(){
 	log_info "Found X11 include path directory: $xlib_inc"
 
 	log_info 'Generate "makefile.gen" from template "makefile.mk"'
-		echo "INC=$xlib_inc"  	 	    	>  Makefile.gen 
+		echo "INC=$xlib_inc"  	 	    	>  Makefile.gen
 		cat Makefile.mk | grep -v %%%%  	>> Makefile.gen
 	log_info 'Generate "test/makefile.gen" from template "test/makefile.mk"'
 		echo "INC=$xlib_inc"				>  test/Makefile.gen
