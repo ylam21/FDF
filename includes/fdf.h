@@ -6,7 +6,7 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 19:20:43 by omaly             #+#    #+#             */
-/*   Updated: 2025/10/18 19:50:23 by omaly            ###   ########.fr       */
+/*   Updated: 2025/10/29 20:14:10 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,15 @@
 #include "../lib/mlx/mlx.h"
 #include "../lib/mlx/mlx_int.h"
 
+#include <fcntl.h>
+
 // Window size for mlx_new_window()
 #define WINDOW_SIZE_X 1920
 #define WINDOW_SIZE_Y 1080
+
+
+typedef struct s_fdf {
+	int file;
+} t_fdf;
 
 #endif
