@@ -6,7 +6,7 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 19:51:52 by omaly             #+#    #+#             */
-/*   Updated: 2025/10/29 20:18:32 by omaly            ###   ########.fr       */
+/*   Updated: 2025/11/07 13:15:05 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ int open_map(char *map)
 	return fd;
 }
 
-int init_fdf(t_fdf fdf, int argc, char **argv)
+int fdf_init(t_fdf *fdf, int argc, char **argv)
 {
 	if (argc != 2)
 		return 1;
-	fdf.file = open_map(argv[1]);
-	if (fdf.file != 0)
+	fdf->map->fd = open_map(argv[1]);
+	if (fdf->map->fd != 0)
 		return 2;
 	return 0;
 }

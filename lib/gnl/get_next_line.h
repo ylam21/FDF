@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/18 19:35:52 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/07 12:29:47 by omaly            ###   ########.fr       */
+/*   Created: 2025/06/24 10:14:28 by omaly             #+#    #+#             */
+/*   Updated: 2025/07/09 12:21:24 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-int main(int argc, char **argv)
-{
-	t_fdf fdf;
-	if (fdf_init(fdf, argc, argv) != 0)
-		return 1;
-	if (parse_map() != 0)
-		return 2;
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
 
-	return (0);
-}
+char	*get_next_line(int fd);
+
+#endif

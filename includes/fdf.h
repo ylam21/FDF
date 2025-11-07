@@ -6,7 +6,7 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 19:20:43 by omaly             #+#    #+#             */
-/*   Updated: 2025/10/29 20:14:10 by omaly            ###   ########.fr       */
+/*   Updated: 2025/11/07 13:15:47 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define FDF_H
 
 #include "../lib/libft/libft.h"
+#include "../lib/gnl/get_next_line.h"
 #include "../lib/mlx/mlx.h"
 #include "../lib/mlx/mlx_int.h"
 
@@ -24,8 +25,21 @@
 #define WINDOW_SIZE_Y 1080
 
 
+typedef struct s_vertex {
+	double x;
+	double y;
+	double z;
+	int color;
+}	t_vertex;
+
+typedef struct s_map {
+	int fd;
+	int size;
+} t_map;
+
 typedef struct s_fdf {
-	int file;
+	t_map *map;
+	t_vertex *scene;
 } t_fdf;
 
 #endif
