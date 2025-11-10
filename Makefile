@@ -6,7 +6,7 @@
 #    By: omaly <omaly@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/18 19:25:08 by omaly             #+#    #+#              #
-#    Updated: 2025/11/10 14:22:30 by omaly            ###   ########.fr        #
+#    Updated: 2025/11/10 16:10:58 by omaly            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,24 +33,28 @@ MLX_LIB := $(MLX_DIR)/libmlx.a $(MLX_DIR)/libmlx_Linux.a
 RM = rm -rf
 
 # Source files
-SRC =	$(SRC_DIR)/main.c \
-		$(SRC_DIR)/fdf_init.c \
-		$(SRC_DIR)/error.c \
-		$(SRC_DIR)/parser/parse_map.c \
-		$(SRC_DIR)/parser/calc_map_size.c
+MAIN_SRCS =	$(SRC_DIR)/main.c \
+			$(SRC_DIR)/fdf_init.c \
+			$(SRC_DIR)/error.c \
 
 PARSER_SRCS	:=	$(SRC_DIR)/parser/parse_map.c \
-				$(SRC_DIR)/parser/calc_map_size \
+				$(SRC_DIR)/parser/parse_line.c \
+				$(SRC_DIR)/parser/parse_token.c \
 
 UTILS_SRCS	:=	$(SRC_DIR)/utils/is_whitespace.c \
-				$(SRC_DIR)/utils/count_words.c
+				$(SRC_DIR)/utils/count_words.c \
+				$(SRC_DIR)/utils/fdf_atoi.c \
+				$(SRC_DIR)/utils/free_split.c \
+				$(SRC_DIR)/utils/hex_to_int.c \
+
+SRCS = $(MAIN_SRCS) $(PARSER_SRCS) $(UTILS_SRCS)
 
 # FDF Object files
-OBJS = $(patsubst $(SRC_DIR)/%.c,$(BUILD_DIR)/%.o,$(SRC))
+OBJS = $(patsubst $(SRC_DIR)/%.c,$(BUILD_DIR)/%.o,$(SRCS))
 
 all: $(NAME)
 
-$(NAME): dir $(OBJS) $(MLX_LIB) $(LIBFT_LIB)
+$(NAME): $(OBJS) $(MLX_LIB) $(LIBFT_LIB) | dir
 	$(CC) $(CFLAGS) $(OBJS) \
 	-L$(LIBFT_DIR) -lft \
 	-L$(MLX_DIR) -lmlx_Linux \
@@ -64,7 +68,8 @@ $(MLX_LIB):
 	$(MAKE) -C $(MLX_DIR)
 
 # Create Object Files
-$(BUILD_DIR)/%.o: dir $(SRC_DIR)/%.c
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c | dir
+	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 dir:
@@ -82,4 +87,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY = NAME all clean fclean
+.PHONY = NAME all clean fclean dir

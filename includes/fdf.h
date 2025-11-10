@@ -6,7 +6,7 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 19:20:43 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/10 15:54:03 by omaly            ###   ########.fr       */
+/*   Updated: 2025/11/10 16:12:57 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 #include <fcntl.h>
 #include <limits.h>
+#include <stdlib.h>
 
 // Window size for mlx_new_window()
 #define WINDOW_SIZE_X 1920
@@ -27,9 +28,9 @@
 
 
 typedef struct s_vertex {
-	double x;
-	double y;
-	double z;
+	int x;
+	int y;
+	int z;
 	int color;
 }	t_vertex;
 
