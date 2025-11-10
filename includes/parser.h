@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/24 10:14:28 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/10 13:58:02 by omaly            ###   ########.fr       */
+/*   Created: 2025/11/10 15:49:18 by omaly             #+#    #+#             */
+/*   Updated: 2025/11/10 15:51:02 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef PARSER_H
+#define PARSER_H
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1000
-# endif
+#include "fdf.h"
 
-char	*get_next_line(int fd);
+int	parse_map(t_vertex **scene, t_map map);
+int	parse_line(t_vertex **scene, char *line, int curr_row, int cols);
+int	parse_token(t_vertex *vertex, char *token, int row, int col);
 
 #endif

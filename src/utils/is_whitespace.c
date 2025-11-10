@@ -1,22 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   is_whitespace.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/24 10:14:28 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/10 13:58:02 by omaly            ###   ########.fr       */
+/*   Created: 2025/11/10 14:20:55 by omaly             #+#    #+#             */
+/*   Updated: 2025/11/10 14:20:57 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1000
-# endif
-
-char	*get_next_line(int fd);
-
-#endif
+int	is_whitespace(char c)
+{
+	return (c == '\t' || c == '\n' || c == '\v' || c == '\f' || c == '\r'
+		|| c == ' ');
+}

@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   free_split.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/24 10:14:28 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/10 13:58:02 by omaly            ###   ########.fr       */
+/*   Created: 2025/11/10 15:38:31 by omaly             #+#    #+#             */
+/*   Updated: 2025/11/10 15:38:44 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+void	free_split(char **split)
+{
+	int i;
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1000
-# endif
-
-char	*get_next_line(int fd);
-
-#endif
+	i = 0;
+	if (!split)
+		return ;
+	while (split[i])
+	{
+		free(split[i]);
+		i++;
+	}
+	free(split);
+}

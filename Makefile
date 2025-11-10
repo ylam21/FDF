@@ -6,7 +6,7 @@
 #    By: omaly <omaly@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/18 19:25:08 by omaly             #+#    #+#              #
-#    Updated: 2025/11/10 13:29:33 by omaly            ###   ########.fr        #
+#    Updated: 2025/11/10 14:22:30 by omaly            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,9 +39,11 @@ SRC =	$(SRC_DIR)/main.c \
 		$(SRC_DIR)/parser/parse_map.c \
 		$(SRC_DIR)/parser/calc_map_size.c
 
-PARSER_SRCS :=	$(SRC_DIR)/parser/parse_map.c \
+PARSER_SRCS	:=	$(SRC_DIR)/parser/parse_map.c \
 				$(SRC_DIR)/parser/calc_map_size \
 
+UTILS_SRCS	:=	$(SRC_DIR)/utils/is_whitespace.c \
+				$(SRC_DIR)/utils/count_words.c
 
 # FDF Object files
 OBJS = $(patsubst $(SRC_DIR)/%.c,$(BUILD_DIR)/%.o,$(SRC))

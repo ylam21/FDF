@@ -1,36 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map.c                                        :+:      :+:    :+:   */
+/*   parse_line.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/07 12:26:23 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/10 15:47:39 by omaly            ###   ########.fr       */
+/*   Created: 2025/11/10 15:46:45 by omaly             #+#    #+#             */
+/*   Updated: 2025/11/10 15:47:04 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fdf.h"
 
-int	parse_map(t_vertex **scene, t_map map)
+int	parse_line(t_vertex **scene, char *line, int curr_row, int cols)
 {
-	char	*line;
-	int		curr_row;
+	char	**tokens;
+	int		i;
 
-	curr_row = 0;
-	line = get_next_line(map.fd);
-	while (line != NULL)
+	tokens = ft_split(line, ' ');
+	if (tokens == NULL)
+		return (1);
+	i = 0;
+	while (tokens[i] != NULL && i < cols)
 	{
-		if (parse_line(scene, line, curr_row, map.cols) != 0)
+		if (parse_token(&scene[curr_row][i], tokens[i], curr_row, i) != 0)
 		{
-			free(line);
-			return (1);
+			free_split(tokens);
+			return (2);
 		}
-		free(line);
-		curr_row++;
-		line = get_next_line(map.fd);
+		i++;
 	}
-	if (curr_row != map.rows)
-		return (2);
+	if (i != cols || tokens[i] != NULL)
+	{
+		free_split(tokens);
+		return (3);
+	}
+	free_split(tokens);
 	return (0);
 }

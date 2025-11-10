@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/24 10:14:28 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/10 13:58:02 by omaly            ###   ########.fr       */
+/*   Created: 2025/11/10 14:19:33 by omaly             #+#    #+#             */
+/*   Updated: 2025/11/10 15:38:51 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef UTILS_H
+#define UTILS_H
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1000
-# endif
-
-char	*get_next_line(int fd);
-
+int	is_whitespace(char c);
+int	count_words(char *s);
+int	fdf_atoi(const char *s, int *out);
+int	hex_to_int(const char *hex_str);
+void	free_split(char **split);
 #endif

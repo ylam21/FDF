@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parse_token.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/18 19:35:52 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/10 15:58:08 by omaly            ###   ########.fr       */
+/*   Created: 2025/11/10 15:47:10 by omaly             #+#    #+#             */
+/*   Updated: 2025/11/10 15:47:28 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "../../includes/fdf.h"
 
-int	main(int argc, char **argv)
+int	parse_token(t_vertex *vertex, char *token, int row, int col)
 {
-	t_fdf	fdf;
+	char	*comma_pos;
 
-	if (argc < 2)
-		exit_error(ERROR_ARGC);
-	if (has_fdf_extension(argv[1]) != 1)
-		exit_error(ERROR_EXTENSION);
-	if (fdf_init(&fdf, argv[1]) != 0)
-		exit_error(ERROR_INIT);
-	if (parse_map(fdf.scene, *fdf.map) != 0)
-		exit_error(ERROR_PARSE);
+	if (vertex == NULL || token == NULL)
+		return (1);
+	if (row < 0 || col < 0)
+		return (2);
+	vertex->x = col;
+	vertex->y = row;
+	vertex->color = 0;
+	comma_pos = ft_strchr(token, ',');
+	if (comma_pos)
+		vertex->color = hex_to_int(comma_pos + 1);
+	if (fdf_atoi(token, &vertex->z) != 0)
+		return (3);
 	return (0);
 }

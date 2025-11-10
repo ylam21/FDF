@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   count_words.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/24 10:14:28 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/10 13:58:02 by omaly            ###   ########.fr       */
+/*   Created: 2025/11/10 14:18:16 by omaly             #+#    #+#             */
+/*   Updated: 2025/11/10 14:21:43 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "../../includes/fdf.h"
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1000
-# endif
+int	count_words(char *s)
+{
+	int	words;
+	int	i;
 
-char	*get_next_line(int fd);
-
-#endif
+	words = 0;
+	i = 0;
+	while (s && s[i] != '\0')
+	{
+		while (is_whitespace(s[i]))
+			i++;
+		if (ft_isalnum(s[i]))
+			words++;
+		while (ft_isalnum(s[i]))
+			i++;
+	}
+	return (words);
+}
