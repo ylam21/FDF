@@ -1,24 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   fdf_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/18 19:35:52 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/07 12:29:47 by omaly            ###   ########.fr       */
+/*   Created: 2025/10/29 19:51:52 by omaly             #+#    #+#             */
+/*   Updated: 2025/11/10 12:34:55 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-int main(int argc, char **argv)
+void get_map_dimensions(t_map *map)
 {
-	t_fdf fdf;
-	if (fdf_init(fdf, argc, argv) != 0)
-		return 1;
-	if (parse_map() != 0)
-		return 2;
 
-	return (0);
+}
+
+t_map get_map_data(char *filename)
+{
+	t_map map;
+
+	map.rows = 0;
+	map.cols = 0;
+	map.fd = open(filename, O_RDONLY);
+	if (map.fd < 0) {
+		perror(filename);
+		exit_error(EXIT_FAILURE);
+	}
+	get_map_dimensions(&map);
+	return map;
+}
+
+int fdf_init(t_fdf *fdf, char *filename)
+{
+	fdf->map = get_map_data(filename);
+	fdf->scene = allocate_scene(fdf->map.rows, fdf->map.cols);
+	return 0;
 }

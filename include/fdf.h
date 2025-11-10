@@ -6,7 +6,7 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 19:20:43 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/07 13:15:47 by omaly            ###   ########.fr       */
+/*   Updated: 2025/11/10 12:36:09 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 #define WINDOW_SIZE_X 1920
 #define WINDOW_SIZE_Y 1080
 
+// PROJECT MODULES
+#include "error.h"
 
 typedef struct s_vertex {
 	double x;
@@ -34,12 +36,15 @@ typedef struct s_vertex {
 
 typedef struct s_map {
 	int fd;
-	int size;
+	int rows;
+	int cols;
 } t_map;
 
 typedef struct s_fdf {
-	t_map *map;
-	t_vertex *scene;
+	t_map map;
+	t_vertex **scene;
 } t_fdf;
 
+int fdf_init(char *filename);
+int has_fdf_extension(char *filename);
 #endif

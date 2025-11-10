@@ -6,13 +6,12 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 12:26:23 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/07 13:10:16 by omaly            ###   ########.fr       */
+/*   Updated: 2025/11/09 14:21:27 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fdf.h"
 
-CHAR_SPACE;
 
 int parse_line(t_fdf *fdf, const char *line)
 {
