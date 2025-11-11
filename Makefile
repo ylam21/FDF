@@ -6,7 +6,7 @@
 #    By: omaly <omaly@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/18 19:25:08 by omaly             #+#    #+#              #
-#    Updated: 2025/11/10 16:10:58 by omaly            ###   ########.fr        #
+#    Updated: 2025/11/11 12:14:12 by omaly            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,11 @@ LIBFT_LIB := $(LIBFT_DIR)/libft.a
 MLX_DIR := $(LIB_DIR)/mlx
 MLX_LIB := $(MLX_DIR)/libmlx.a $(MLX_DIR)/libmlx_Linux.a
 
+# get_next_line
+
+GNL_SRC :=	$(LIB_DIR)/gnl/get_next_line.c \
+			$(LIB_DIR)/gnl/get_next_line_utils.c
+
 # Build tools
 RM = rm -rf
 
@@ -36,6 +41,12 @@ RM = rm -rf
 MAIN_SRCS =	$(SRC_DIR)/main.c \
 			$(SRC_DIR)/fdf_init.c \
 			$(SRC_DIR)/error.c \
+			$(SRC_DIR)/has_fdf_extension.c \
+
+PROJECTOR_SRCS	:=	$(SRC_DIR)/projector/transform.c
+
+RENDERER_SRCS	:=	$(SRC_DIR)/renderer/render.c \
+					$(SRC_DIR)/renderer/bresenham.c
 
 PARSER_SRCS	:=	$(SRC_DIR)/parser/parse_map.c \
 				$(SRC_DIR)/parser/parse_line.c \
@@ -47,7 +58,7 @@ UTILS_SRCS	:=	$(SRC_DIR)/utils/is_whitespace.c \
 				$(SRC_DIR)/utils/free_split.c \
 				$(SRC_DIR)/utils/hex_to_int.c \
 
-SRCS = $(MAIN_SRCS) $(PARSER_SRCS) $(UTILS_SRCS)
+SRCS = $(MAIN_SRCS) $(PARSER_SRCS) $(UTILS_SRCS) $(RENDERER_SRCS) $(PROJECTOR_SRCS) $(GNL_SRC)
 
 # FDF Object files
 OBJS = $(patsubst $(SRC_DIR)/%.c,$(BUILD_DIR)/%.o,$(SRCS))

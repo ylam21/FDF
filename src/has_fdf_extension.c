@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map.c                                        :+:      :+:    :+:   */
+/*   has_fdf_extension.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/07 12:26:23 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/11 10:39:28 by omaly            ###   ########.fr       */
+/*   Created: 2025/11/11 12:09:05 by omaly             #+#    #+#             */
+/*   Updated: 2025/11/11 12:21:57 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/fdf.h"
+#include "../includes/fdf.h"
 
-int	parse_map(t_vertex **scene, t_map *map)
+int	has_fdf_extension(char *filename)
 {
-	char	*line;
-	int		curr_row;
+	size_t	len;
 
-	curr_row = 0;
-	line = get_next_line(map->fd);
-	while (line != NULL)
-	{
-		if (parse_line(scene, line, curr_row, map->cols) != 0)
-		{
-			free(line);
-			return (1);
-		}
-		free(line);
-		curr_row++;
-		line = get_next_line(map->fd);
-	}
-	if (curr_row != map->rows)
-		return (2);
+	if (filename == NULL)
+		return (0);
+	if (ft_strlen(filename) < 5)
+		return (0);
+	len = ft_strlen(filename);
+	if (ft_strnstr(filename, ".fdf", len) != NULL)
+		return (1);
 	return (0);
 }

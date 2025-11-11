@@ -1,36 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map.c                                        :+:      :+:    :+:   */
+/*   projector.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/07 12:26:23 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/11 10:39:28 by omaly            ###   ########.fr       */
+/*   Created: 2025/11/11 11:57:48 by omaly             #+#    #+#             */
+/*   Updated: 2025/11/11 12:08:55 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/fdf.h"
+#ifndef PROJECTOR_H
+#define PROJECTOR_H
 
-int	parse_map(t_vertex **scene, t_map *map)
-{
-	char	*line;
-	int		curr_row;
+#include "fdf.h"
 
-	curr_row = 0;
-	line = get_next_line(map->fd);
-	while (line != NULL)
-	{
-		if (parse_line(scene, line, curr_row, map->cols) != 0)
-		{
-			free(line);
-			return (1);
-		}
-		free(line);
-		curr_row++;
-		line = get_next_line(map->fd);
-	}
-	if (curr_row != map->rows)
-		return (2);
-	return (0);
-}
+t_point2 project_vertex(t_camera *camera, t_map *map, t_vertex *v);
+
+#endif

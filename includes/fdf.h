@@ -6,7 +6,7 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 19:20:43 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/10 16:12:57 by omaly            ###   ########.fr       */
+/*   Updated: 2025/11/11 12:15:43 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,25 @@
 #include <fcntl.h>
 #include <limits.h>
 #include <stdlib.h>
+#include <math.h>
 
 // Window size for mlx_new_window()
 #define WINDOW_SIZE_X 1920
 #define WINDOW_SIZE_Y 1080
 
+typedef struct s_point2 {
+	int x;
+	int y;
+	int color;
+}	t_point2;
+
+typedef struct s_camera {
+	double zoom;
+	double z_scale;
+	double angle;
+	double offset_x;
+	double offset_y;
+}	t_camera;
 
 typedef struct s_vertex {
 	int x;
@@ -41,14 +55,21 @@ typedef struct s_map {
 } t_map;
 
 typedef struct s_fdf {
+	void *mlx;
+	void *win;
+	t_img *img;
 	t_map *map;
 	t_vertex **scene;
+	t_camera *camera;
+
 } t_fdf;
 
 // PROJECT MODULES
 #include "error.h"
 #include "utils.h"
 #include "parser.h"
+#include "projector.h"
+#include "renderer.h"
 
 int fdf_init(t_fdf *fdf, char *filename);
 int has_fdf_extension(char *filename);
