@@ -6,7 +6,7 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 19:35:52 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/11 12:05:48 by omaly            ###   ########.fr       */
+/*   Updated: 2025/11/11 12:31:11 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int argc, char **argv)
 		exit_error(ERROR_PARSE);
 
 	render_scene(&fdf);
-
+	mlx_loop(fdf.mlx);
 
 	return (0);
 }

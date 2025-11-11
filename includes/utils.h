@@ -6,12 +6,14 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 14:19:33 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/10 15:38:51 by omaly            ###   ########.fr       */
+/*   Updated: 2025/11/11 12:40:57 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef UTILS_H
 #define UTILS_H
+
+#include "../src/utils/gnl/get_next_line.h"
 
 int	is_whitespace(char c);
 int	count_words(char *s);

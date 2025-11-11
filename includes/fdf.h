@@ -6,7 +6,7 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 19:20:43 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/11 12:15:43 by omaly            ###   ########.fr       */
+/*   Updated: 2025/11/11 12:40:22 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #define FDF_H
 
 #include "../lib/libft/libft.h"
-#include "../lib/gnl/get_next_line.h"
 #include "../lib/mlx/mlx.h"
 #include "../lib/mlx/mlx_int.h"
 

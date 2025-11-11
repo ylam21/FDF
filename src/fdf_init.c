@@ -6,7 +6,7 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 19:51:52 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/11 10:53:43 by omaly            ###   ########.fr       */
+/*   Updated: 2025/11/11 12:28:58 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,16 +77,16 @@ int	allocate_scene(t_vertex ***scene, int rows, int cols)
 	return (0);
 }
 
-int camera_init(t_camera *camera)
+int	camera_init(t_camera *camera)
 {
 	if (camera == NULL)
-		return 1;
+		return (1);
 	camera->zoom = 20.0;
 	camera->z_scale = 1.0;
 	camera->angle = 0.8;
 	camera->offset_x = WINDOW_SIZE_X / 2;
 	camera->offset_y = WINDOW_SIZE_Y / 2;
-	return 0;
+	return (0);
 }
 
 int	fdf_init(t_fdf *fdf, char *filename)
@@ -94,7 +94,7 @@ int	fdf_init(t_fdf *fdf, char *filename)
 	if (get_map_data(fdf->map, filename) != 0)
 		return (1);
 	if (camera_init(fdf->camera) != 0)
-		return 2;
+		return (2);
 	if (allocate_scene(&fdf->scene, fdf->map->rows, fdf->map->cols) != 0)
 		return (3);
 	return (0);

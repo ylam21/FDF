@@ -6,16 +6,16 @@
 #    By: omaly <omaly@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/18 19:25:08 by omaly             #+#    #+#              #
-#    Updated: 2025/11/11 12:14:12 by omaly            ###   ########.fr        #
+#    Updated: 2025/11/11 13:06:52 by omaly            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Project settings
-NAME := fdf
 SRC_DIR := src
 BUILD_DIR := build
 LIB_DIR := lib
 BIN_DIR := bin
+NAME := $(BIN_DIR)/fdf
 
 # Compiler settings
 CC := cc
@@ -29,11 +29,6 @@ LIBFT_LIB := $(LIBFT_DIR)/libft.a
 MLX_DIR := $(LIB_DIR)/mlx
 MLX_LIB := $(MLX_DIR)/libmlx.a $(MLX_DIR)/libmlx_Linux.a
 
-# get_next_line
-
-GNL_SRC :=	$(LIB_DIR)/gnl/get_next_line.c \
-			$(LIB_DIR)/gnl/get_next_line_utils.c
-
 # Build tools
 RM = rm -rf
 
@@ -42,6 +37,9 @@ MAIN_SRCS =	$(SRC_DIR)/main.c \
 			$(SRC_DIR)/fdf_init.c \
 			$(SRC_DIR)/error.c \
 			$(SRC_DIR)/has_fdf_extension.c \
+
+GNL_SRCS :=	$(SRC_DIR)/utils/gnl/get_next_line.c \
+			$(SRC_DIR)/utils/gnl/get_next_line_utils.c
 
 PROJECTOR_SRCS	:=	$(SRC_DIR)/projector/transform.c
 
@@ -58,19 +56,19 @@ UTILS_SRCS	:=	$(SRC_DIR)/utils/is_whitespace.c \
 				$(SRC_DIR)/utils/free_split.c \
 				$(SRC_DIR)/utils/hex_to_int.c \
 
-SRCS = $(MAIN_SRCS) $(PARSER_SRCS) $(UTILS_SRCS) $(RENDERER_SRCS) $(PROJECTOR_SRCS) $(GNL_SRC)
+SRCS = $(MAIN_SRCS) $(PARSER_SRCS) $(UTILS_SRCS) $(RENDERER_SRCS) $(PROJECTOR_SRCS) $(GNL_SRCS)
 
 # FDF Object files
 OBJS = $(patsubst $(SRC_DIR)/%.c,$(BUILD_DIR)/%.o,$(SRCS))
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(MLX_LIB) $(LIBFT_LIB) | dir
+$(NAME): $(OBJS) $(MLX_LIB) $(LIBFT_LIB) | $(BIN_DIR)
 	$(CC) $(CFLAGS) $(OBJS) \
 	-L$(LIBFT_DIR) -lft \
 	-L$(MLX_DIR) -lmlx_Linux \
 	-L/usr/lib -lXext -lX11 -lm -lz \
-	-o $(BIN_DIR)/$(NAME)
+	-o $@
 
 $(LIBFT_LIB):
 	$(MAKE) -C $(LIBFT_DIR)
@@ -78,13 +76,16 @@ $(LIBFT_LIB):
 $(MLX_LIB):
 	$(MAKE) -C $(MLX_DIR)
 
+$(BIN_DIR):
+	mkdir -p $(BIN_DIR)
+
+$(BUILD_DIR):
+	mkdir -p $(BUILD_DIR)
+
 # Create Object Files
-$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c | dir
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c | $(BUILD_DIR)
 	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
-
-dir:
-	mkdir -p $(BUILD_DIR) $(BIN_DIR)
 
 clean:
 	$(RM) $(BUILD_DIR) $(BIN_DIR)
@@ -98,4 +99,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY = NAME all clean fclean dir
+.PHONY: all clean fclean
