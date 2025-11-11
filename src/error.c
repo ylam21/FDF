@@ -6,13 +6,13 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 11:45:50 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/10 11:56:08 by omaly            ###   ########.fr       */
+/*   Updated: 2025/11/11 14:54:07 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-void exit_error(char *error_msg)
+void	exit_error(char *error_msg)
 {
 	ft_putstr_fd(error_msg, 2);
 	exit(EXIT_FAILURE);

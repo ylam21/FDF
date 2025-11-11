@@ -6,17 +6,24 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 19:35:52 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/11 12:31:11 by omaly            ###   ########.fr       */
+/*   Updated: 2025/11/11 14:55:58 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
+int	close_window(t_fdf *fdf)
+{
+	mlx_destroy_window(fdf->mlx, fdf->win);
+	exit(0);
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_fdf	fdf;
 
-	if (argc < 2)
+	if (argc != 2)
 		exit_error(ERROR_ARGC);
 	if (has_fdf_extension(argv[1]) != 1)
 		exit_error(ERROR_EXTENSION);
@@ -24,9 +31,8 @@ int	main(int argc, char **argv)
 		exit_error(ERROR_INIT);
 	if (parse_map(fdf.scene, fdf.map) != 0)
 		exit_error(ERROR_PARSE);
-
-	render_scene(&fdf);
+	render_scene(&fdf, fdf.map, fdf.camera);
+	mlx_hook(fdf.win, 17, 0, close_window, &fdf);
 	mlx_loop(fdf.mlx);
-
 	return (0);
 }

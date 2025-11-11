@@ -6,7 +6,7 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 19:51:52 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/11 12:28:58 by omaly            ###   ########.fr       */
+/*   Updated: 2025/11/11 14:54:17 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,23 @@ int	get_map_dimensions(t_map *map)
 	return (0);
 }
 
-int	get_map_data(t_map *map, char *filename)
+int	get_map_data(t_map *map, const char *filename)
 {
 	map->fd = open(filename, O_RDONLY);
-	if (map->fd < 0)
+	if (map->fd == -1)
 	{
 		perror(filename);
 		return (1);
 	}
 	if (get_map_dimensions(map) != 0)
 		return (2);
+	close(map->fd);
+	map->fd = open(filename, O_RDONLY);
+	if (map->fd == -1)
+	{
+		perror(filename);
+		return (1);
+	}
 	return (0);
 }
 
@@ -91,11 +98,16 @@ int	camera_init(t_camera *camera)
 
 int	fdf_init(t_fdf *fdf, char *filename)
 {
-	if (get_map_data(fdf->map, filename) != 0)
+	if (get_map_data(&fdf->map, filename) != 0)
 		return (1);
-	if (camera_init(fdf->camera) != 0)
+	if (camera_init(&fdf->camera) != 0)
 		return (2);
-	if (allocate_scene(&fdf->scene, fdf->map->rows, fdf->map->cols) != 0)
+	if (allocate_scene(&fdf->scene, fdf->map.rows, fdf->map.cols) != 0)
 		return (3);
+	fdf->mlx = mlx_init();
+	fdf->win = mlx_new_window(fdf->mlx, WINDOW_SIZE_X, WINDOW_SIZE_Y, "FDF");
+	fdf->img.img = mlx_new_image(fdf->mlx, WINDOW_SIZE_X, WINDOW_SIZE_Y);
+	fdf->img.addr = mlx_get_data_addr(fdf->img.img, &fdf->img.bits_per_pixel,
+			&fdf->img.line_length, &fdf->img.endian);
 	return (0);
 }

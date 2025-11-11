@@ -6,7 +6,7 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 15:46:45 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/10 15:47:04 by omaly            ###   ########.fr       */
+/*   Updated: 2025/11/11 13:47:16 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	parse_line(t_vertex **scene, char *line, int curr_row, int cols)
 	{
 		if (parse_token(&scene[curr_row][i], tokens[i], curr_row, i) != 0)
 		{
+			printf("Failed to parse token\n");
 			free_split(tokens);
 			return (2);
 		}
@@ -32,6 +33,7 @@ int	parse_line(t_vertex **scene, char *line, int curr_row, int cols)
 	}
 	if (i != cols || tokens[i] != NULL)
 	{
+		printf("Failed to parse token 2\n");
 		free_split(tokens);
 		return (3);
 	}
