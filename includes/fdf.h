@@ -6,7 +6,7 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 19:20:43 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/16 23:59:42 by omaly            ###   ########.fr       */
+/*   Updated: 2025/11/17 00:16:54 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,7 @@
 # include "renderer.h"
 # include "utils.h"
 
-// Window size for mlx_new_window()
-# define WINDOW_SIZE_X 1920
-# define WINDOW_SIZE_Y 1080
-
 int		fdf_init(t_fdf *fdf, char *filename);
 int		has_fdf_extension(char *filename);
-void	free_scene(t_vertex **scene, int rows);
+void	free_fdf(t_fdf *fdf);
 #endif

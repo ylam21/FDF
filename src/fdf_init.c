@@ -6,7 +6,7 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 19:51:52 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/17 00:02:24 by omaly            ###   ########.fr       */
+/*   Updated: 2025/11/17 00:21:58 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,5 +111,7 @@ int	fdf_init(t_fdf *fdf, char *filename)
 	fdf->img.img = mlx_new_image(fdf->mlx, WINDOW_SIZE_X, WINDOW_SIZE_Y);
 	fdf->img.addr = mlx_get_data_addr(fdf->img.img, &fdf->img.bits_per_pixel,
 			&fdf->img.line_length, &fdf->img.endian);
+	if (fdf->img.addr == NULL)
+		return 4;
 	return (0);
 }

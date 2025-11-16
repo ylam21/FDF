@@ -6,7 +6,7 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 12:02:59 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/11 14:54:55 by omaly            ###   ########.fr       */
+/*   Updated: 2025/11/17 00:11:40 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 # define RENDERER_H
 
 # include "fdf.h"
-
+// Window size for mlx_new_window()
+# define WINDOW_SIZE_X 1920
+# define WINDOW_SIZE_Y 1080
+# define WHITE_COLOR 0xFFFFFFFF
 void	render_scene(t_fdf *fdf, t_map map, t_camera camera);
 void	draw_line(t_fdf *fdf, t_point2 a, t_point2 b);
 #endif
