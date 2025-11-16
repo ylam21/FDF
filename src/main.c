@@ -6,7 +6,7 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 19:35:52 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/16 22:15:05 by omaly            ###   ########.fr       */
+/*   Updated: 2025/11/16 23:58:51 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ int	main(int argc, char **argv)
 	render_scene(&fdf, fdf.map, fdf.camera);
 	mlx_hook(fdf.win, 17, 0, close_window, &fdf);
 	mlx_loop(fdf.mlx);
+	free_scene(fdf.scene, fdf.map.rows);
 	return (0);
 }

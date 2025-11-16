@@ -6,7 +6,7 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 19:51:52 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/11 14:54:17 by omaly            ###   ########.fr       */
+/*   Updated: 2025/11/17 00:02:24 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,13 @@ int	get_map_dimensions(t_map *map)
 	while (line != NULL)
 	{
 		tmp_col_count = count_words(line);
+		free(line);
 		if (cols < tmp_col_count)
 			cols = tmp_col_count;
 		rows++;
 		line = get_next_line(map->fd);
 	}
+	free(line);
 	map->rows = rows;
 	map->cols = cols;
 	return (0);
@@ -88,7 +90,7 @@ int	camera_init(t_camera *camera)
 {
 	if (camera == NULL)
 		return (1);
-	camera->zoom = 20.0;
+	camera->zoom = 7.5;
 	camera->z_scale = 1.0;
 	camera->angle = 0.8;
 	camera->offset_x = WINDOW_SIZE_X / 2;

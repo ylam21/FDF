@@ -6,7 +6,7 @@
 #    By: omaly <omaly@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/18 19:25:08 by omaly             #+#    #+#              #
-#    Updated: 2025/11/16 22:23:18 by omaly            ###   ########.fr        #
+#    Updated: 2025/11/16 23:59:29 by omaly            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ RM = rm -rf
 MAIN_SRCS =	$(SRC_DIR)/main.c \
 			$(SRC_DIR)/fdf_init.c \
 			$(SRC_DIR)/error.c \
+			$(SRC_DIR)/free_scene.c \
 			$(SRC_DIR)/has_fdf_extension.c \
 
 GNL_SRCS :=	$(SRC_DIR)/utils/gnl/get_next_line.c \
