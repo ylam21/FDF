@@ -6,11 +6,22 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 15:47:10 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/11 14:30:25 by omaly            ###   ########.fr       */
+/*   Updated: 2025/11/16 22:33:06 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fdf.h"
+
+int parse_null_token(t_vertex *vertex, int row, int col)
+{
+	if (vertex == NULL)
+		return 1;
+	vertex->x = col;
+	vertex->y = row;
+	vertex->z = 0;
+	vertex->color = 0xFFFFFFFF;
+	return 0;
+}
 
 int	parse_token(t_vertex *vertex, char *token, int row, int col)
 {
@@ -22,7 +33,7 @@ int	parse_token(t_vertex *vertex, char *token, int row, int col)
 		return (2);
 	vertex->x = col;
 	vertex->y = row;
-	vertex->color = 0x00FF0000;
+	vertex->color = 0xFFFFFFFF;
 	comma_pos = ft_strchr(token, ',');
 	if (comma_pos)
 		vertex->color = hex_to_int(comma_pos + 1);

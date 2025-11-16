@@ -1,6 +1,8 @@
+*.env
+bin
+build
 .vscode
-fdf
-obj
 lib/libft/*.a
 lib/libft/objs/
 lib/mlx/*.a
+my_tests

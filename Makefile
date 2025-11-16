@@ -6,7 +6,7 @@
 #    By: omaly <omaly@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/18 19:25:08 by omaly             #+#    #+#              #
-#    Updated: 2025/11/11 13:06:52 by omaly            ###   ########.fr        #
+#    Updated: 2025/11/16 22:23:18 by omaly            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,7 @@ UTILS_SRCS	:=	$(SRC_DIR)/utils/is_whitespace.c \
 				$(SRC_DIR)/utils/count_words.c \
 				$(SRC_DIR)/utils/fdf_atoi.c \
 				$(SRC_DIR)/utils/free_split.c \
+				$(SRC_DIR)/utils/is_sign.c \
 				$(SRC_DIR)/utils/hex_to_int.c \
 
 SRCS = $(MAIN_SRCS) $(PARSER_SRCS) $(UTILS_SRCS) $(RENDERER_SRCS) $(PROJECTOR_SRCS) $(GNL_SRCS)
