@@ -6,12 +6,12 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 20:49:50 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/16 20:50:40 by omaly            ###   ########.fr       */
+/*   Updated: 2025/11/17 09:33:29 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
-#define STRUCTS_H
+# define STRUCTS_H
 
 typedef struct s_point2
 {

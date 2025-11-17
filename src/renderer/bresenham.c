@@ -6,7 +6,7 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 11:26:16 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/11 14:55:36 by omaly            ###   ########.fr       */
+/*   Updated: 2025/11/17 09:40:32 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,23 @@ static void	put_pixel(t_fdf *fdf, int x, int y, int color)
 	dst[2] = (char)((color >> 16) & 0xFF);
 }
 
+int	get_step(int start, int end)
+{
+	if (start < end)
+		return (1);
+	if (start > end)
+		return (-1);
+	return (0);
+}
+
 void	draw_line(t_fdf *fdf, t_point2 a, t_point2 b)
 {
 	t_bresenham_state	state;
 
 	state.dx = abs(b.x - a.x);
 	state.dy = -abs(b.y - a.y);
-	state.sx = (a.x < b.x) ? 1 : -1;
-	state.sy = (a.y < b.y) ? 1 : -1;
+	state.sx = get_step(a.x, b.x);
+	state.sy = get_step(a.y, b.y);
 	state.err = state.dx + state.dy;
 	while (1)
 	{
