@@ -6,7 +6,7 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 14:18:16 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/16 22:22:02 by omaly            ###   ########.fr       */
+/*   Updated: 2025/11/17 08:30:42 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,11 @@ int	count_words(char *s)
 	i = 0;
 	while (s && s[i] != '\0')
 	{
-		while (is_whitespace(s[i]))
+		while (s[i] != '\0' && is_whitespace(s[i]))
 			i++;
-		if (is_sign(s[i]))
-			i++;
-		if (ft_isalnum(s[i]))
+		if (s[i] != '\0' && !is_whitespace(s[i]))
 			words++;
-		while (ft_isalnum(s[i]))
+		while (s[i] != '\0' && !is_whitespace(s[i]))
 			i++;
 	}
 	return (words);

@@ -6,7 +6,7 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 23:55:06 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/17 00:27:24 by omaly            ###   ########.fr       */
+/*   Updated: 2025/11/17 08:22:13 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void free_scene(t_vertex **scene, int rows)
 		i++;
 	}
 	free(scene);
-	scene = NULL;
 }
 
 void free_mlx(t_fdf *fdf)
