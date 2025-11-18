@@ -15,5 +15,5 @@ Program has to take **exactly 2 arguments**<br>
 2nd argument is a filename that has to have **.fdf extension**.<br>
 
 ## External libraries used
-MiniLibX - [MiniLibX Linux Repository](https://github.com/42paris/minilibx-linux)
-Libft - [Libft Repository](https://github.com/ylam21/libft)
+MiniLibX - [MiniLibX Linux Repository](https://github.com/42paris/minilibx-linux)<br>
+Libft - [Libft Repository](https://github.com/ylam21/libft)<br>
