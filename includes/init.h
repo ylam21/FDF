@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   init.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/10 14:19:33 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/18 17:01:49 by omaly            ###   ########.fr       */
+/*   Created: 2025/11/18 16:52:35 by omaly             #+#    #+#             */
+/*   Updated: 2025/11/18 17:42:59 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#ifndef INIT_H
+# define INIT_H
 
-# include "../src/utils/gnl/get_next_line.h"
+int	camera_defaults_init(t_camera *camera);
+int	map_defaults_init(t_map *map, char *filename);
+int	mlx_defaults_init(t_fdf *fdf);
 
-int		is_whitespace(char c);
-int		count_words(char *s);
-int		fdf_atoi(const char *s, int *out);
-int		hex_to_int(const char *hex_str);
-void	free_split(char **split);
-int		is_sign(char c);
-void	free_fdf(t_fdf *fdf);
 #endif

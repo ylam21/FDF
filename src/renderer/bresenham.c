@@ -6,13 +6,13 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 11:26:16 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/17 09:40:32 by omaly            ###   ########.fr       */
+/*   Updated: 2025/11/18 18:18:08 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fdf.h"
 
-static void	put_pixel(t_fdf *fdf, int x, int y, int color)
+void	put_pixel(t_fdf *fdf, int x, int y, int color)
 {
 	char	*dst;
 	int		offset;

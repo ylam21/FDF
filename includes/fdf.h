@@ -6,7 +6,7 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 19:20:43 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/17 00:16:54 by omaly            ###   ########.fr       */
+/*   Updated: 2025/11/18 17:28:39 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@
 // PROJECT MODULES
 # include "structs.h"
 # include "error.h"
+# include "init.h"
 # include "parser.h"
 # include "projector.h"
 # include "renderer.h"
 # include "utils.h"
 
-int		fdf_init(t_fdf *fdf, char *filename);
-int		has_fdf_extension(char *filename);
-void	free_fdf(t_fdf *fdf);
+int			has_fdf_extension(char *filename);
+t_vertex	**allocate_scene(int rows, int cols);
 #endif

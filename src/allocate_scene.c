@@ -1,40 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map.c                                        :+:      :+:    :+:   */
+/*   allocate_scene.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/07 12:26:23 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/18 17:52:38 by omaly            ###   ########.fr       */
+/*   Created: 2025/11/18 16:40:19 by omaly             #+#    #+#             */
+/*   Updated: 2025/11/18 17:28:15 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/fdf.h"
+#include "../includes/fdf.h"
 
-int	parse_map(t_vertex **scene, t_map map)
+t_vertex	**allocate_scene(int rows, int cols)
 {
-	char	*line;
-	int		row;
-	int		fd;
+	t_vertex	**scene;
+	int			i;
+	int			n;
 
-	row = 0;
-	fd = open(map.filename, O_RDONLY);
-	if (fd == -1)
-		return (perror(map.filename), 1);
-	line = get_next_line(fd);
-	while (line != NULL)
+	scene = malloc(sizeof(t_vertex *) * rows);
+	if (scene == NULL)
+		return (NULL);
+	i = 0;
+	while (i < rows)
 	{
-		if (parse_line(scene, line, row, map.cols) != 0)
+		scene[i] = malloc(sizeof(t_vertex) * cols);
+		if (scene[i] == NULL)
 		{
-			free(line);
-			close(fd);
-			return (2);
+			n = 0;
+			while (n < i)
+				free(scene[n++]);
+			free(scene);
+			return (NULL);
 		}
-		free(line);
-		row++;
-		line = get_next_line(fd);
+		i++;
 	}
-	close(fd);
-	return (0);
+	return (scene);
 }

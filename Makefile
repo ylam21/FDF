@@ -6,7 +6,7 @@
 #    By: omaly <omaly@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/18 19:25:08 by omaly             #+#    #+#              #
-#    Updated: 2025/11/17 00:16:41 by omaly            ###   ########.fr        #
+#    Updated: 2025/11/18 17:09:26 by omaly            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,10 +34,9 @@ RM = rm -rf
 
 # Source files
 MAIN_SRCS =	$(SRC_DIR)/main.c \
-			$(SRC_DIR)/fdf_init.c \
-			$(SRC_DIR)/error.c \
-			$(SRC_DIR)/free.c \
 			$(SRC_DIR)/has_fdf_extension.c \
+			$(SRC_DIR)/error.c \
+			$(SRC_DIR)/allocate_scene.c
 
 GNL_SRCS :=	$(SRC_DIR)/utils/gnl/get_next_line.c \
 			$(SRC_DIR)/utils/gnl/get_next_line_utils.c
@@ -51,14 +50,19 @@ PARSER_SRCS	:=	$(SRC_DIR)/parser/parse_map.c \
 				$(SRC_DIR)/parser/parse_line.c \
 				$(SRC_DIR)/parser/parse_token.c \
 
+INIT_SRCS	:=	$(SRC_DIR)/init/camera_defaults_init.c \
+				$(SRC_DIR)/init/mlx_defaults_init.c \
+				$(SRC_DIR)/init/map_defaults_init.c \
+
 UTILS_SRCS	:=	$(SRC_DIR)/utils/is_whitespace.c \
 				$(SRC_DIR)/utils/count_words.c \
 				$(SRC_DIR)/utils/fdf_atoi.c \
 				$(SRC_DIR)/utils/free_split.c \
 				$(SRC_DIR)/utils/is_sign.c \
 				$(SRC_DIR)/utils/hex_to_int.c \
+				$(SRC_DIR)/utils/free_fdf.c \
 
-SRCS = $(MAIN_SRCS) $(PARSER_SRCS) $(UTILS_SRCS) $(RENDERER_SRCS) $(PROJECTOR_SRCS) $(GNL_SRCS)
+SRCS = $(MAIN_SRCS) $(PARSER_SRCS) $(INIT_SRCS) $(UTILS_SRCS) $(RENDERER_SRCS) $(PROJECTOR_SRCS) $(GNL_SRCS)
 
 # FDF Object files
 OBJS = $(patsubst $(SRC_DIR)/%.c,$(BUILD_DIR)/%.o,$(SRCS))

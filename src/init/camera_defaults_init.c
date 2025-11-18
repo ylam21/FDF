@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   camera_defaults_init.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/10 14:19:33 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/18 17:01:49 by omaly            ###   ########.fr       */
+/*   Created: 2025/11/18 16:44:23 by omaly             #+#    #+#             */
+/*   Updated: 2025/11/18 16:57:11 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#include "../../includes/fdf.h"
 
-# include "../src/utils/gnl/get_next_line.h"
-
-int		is_whitespace(char c);
-int		count_words(char *s);
-int		fdf_atoi(const char *s, int *out);
-int		hex_to_int(const char *hex_str);
-void	free_split(char **split);
-int		is_sign(char c);
-void	free_fdf(t_fdf *fdf);
-#endif
+int	camera_defaults_init(t_camera *camera)
+{
+	if (camera == NULL)
+		return (1);
+	camera->zoom = 10;
+	camera->z_scale = 1.0;
+	camera->angle = 0.8;
+	camera->offset_x = WINDOW_SIZE_X / 2;
+	camera->offset_y = WINDOW_SIZE_Y / 2;
+	return (0);
+}

@@ -6,23 +6,23 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 15:38:31 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/11 14:53:36 by omaly            ###   ########.fr       */
+/*   Updated: 2025/11/18 18:11:15 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/fdf.h"
 
-void	free_split(char **split)
+void	free_split(char **tokens)
 {
 	int	i;
 
 	i = 0;
-	if (!split)
+	if (!tokens)
 		return ;
-	while (split[i])
+	while (tokens[i])
 	{
-		free(split[i]);
+		free(tokens[i]);
 		i++;
 	}
-	free(split);
+	free(tokens);
 }

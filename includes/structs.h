@@ -6,7 +6,7 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 20:49:50 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/17 09:33:29 by omaly            ###   ########.fr       */
+/*   Updated: 2025/11/18 17:38:20 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ typedef struct s_proj
 
 typedef struct s_map
 {
-	int			fd;
+	char		*filename;
 	int			rows;
 	int			cols;
 }				t_map;
