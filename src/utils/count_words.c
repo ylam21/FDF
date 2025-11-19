@@ -6,7 +6,7 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 14:18:16 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/19 11:25:02 by omaly            ###   ########.fr       */
+/*   Updated: 2025/11/19 17:35:30 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	count_words(char *s)
 	int	i;
 
 	if (s == NULL)
-		return 0;
+		return (0);
 	words = 0;
 	i = 0;
 	while (s[i] != '\0')

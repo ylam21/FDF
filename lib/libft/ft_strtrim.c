@@ -6,7 +6,7 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 15:37:34 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/19 11:26:48 by omaly            ###   ########.fr       */
+/*   Updated: 2025/11/19 17:36:44 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_isset(const char *set, char c)
 {
 	if (set == NULL)
-		return 0;
+		return (0);
 	while (*set)
 	{
 		if ((char)*set == c)
