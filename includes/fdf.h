@@ -6,7 +6,7 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 19:20:43 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/19 11:14:58 by omaly            ###   ########.fr       */
+/*   Updated: 2025/11/19 17:09:20 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@
 # include "utils.h"
 # define WINDOW_SIZE_X 1920
 # define WINDOW_SIZE_Y 1080
-# define ZOOM 30
-# define Z_SCALE 1.0
+# define Z_SCALE 0.5
 # define ANGLE 0.8
 
 int			has_fdf_extension(char *filename);

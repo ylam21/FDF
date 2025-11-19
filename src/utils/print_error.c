@@ -6,7 +6,7 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 11:45:50 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/19 11:15:58 by omaly            ###   ########.fr       */
+/*   Updated: 2025/11/19 17:24:46 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 int	print_error(char *error_msg)
 {
-	ft_putstr_fd(error_msg, 2);
+	ft_putstr_fd(error_msg, STDERR_FILENO);
 	return (EXIT_FAILURE);
 }
