@@ -6,35 +6,37 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 15:34:37 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/16 22:28:37 by omaly            ###   ########.fr       */
+/*   Updated: 2025/11/19 11:38:14 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	ft_freearr(char **s, size_t size)
+void	free_split(char **tokens)
 {
 	size_t	i;
 
 	i = 0;
-	while (i < size)
+	if (!tokens)
+		return ;
+	while (tokens[i])
 	{
-		free(s[i]);
+		free(tokens[i]);
 		i++;
 	}
-	return ;
+	free(tokens);
 }
 
-static char	*ft_getword(char const *s, char c, int *start)
+char	*get_word(char const *s, char c, int *start)
 {
-	int		i;
-	int		len;
+	size_t	i;
+	size_t	len;
 	char	*word;
 
+	if (s == NULL)
+		return (NULL);
 	while (s[*start] && s[*start] == c)
-	{
 		(*start)++;
-	}
 	i = *start;
 	len = 0;
 	while (s[i] != c && s[i] != '\0')
@@ -42,7 +44,7 @@ static char	*ft_getword(char const *s, char c, int *start)
 		i++;
 		len++;
 	}
-	word = (char *)malloc(sizeof(char) * (len + 1));
+	word = malloc(sizeof(char) * (len + 1));
 	if (!word)
 		return (NULL);
 	ft_strlcpy(word, s + *start, len + 1);
@@ -50,16 +52,18 @@ static char	*ft_getword(char const *s, char c, int *start)
 	return (word);
 }
 
-static int	ft_getwordcount(char const *s, char c)
+size_t	count_tokens(char const *s, char c)
 {
-	int	count;
-	int	inword;
-	int	i;
+	size_t	count;
+	int		inword;
+	size_t	i;
 
+	if (s == NULL)
+		return (0);
 	count = 0;
 	inword = 0;
 	i = 0;
-	while (s && s[i] != '\0')
+	while (s[i] != '\0')
 	{
 		if (s[i] != c && inword == 0)
 		{
@@ -75,23 +79,25 @@ static int	ft_getwordcount(char const *s, char c)
 
 char	**ft_split(char const *s, char c)
 {
-	int		word_count;
+	size_t	token_count;
 	char	**tokens;
 	int		start;
-	int		i;
+	size_t	i;
 
-	word_count = ft_getwordcount(s, c);
-	tokens = malloc(sizeof(char *) * (word_count + 1));
+	if (s == NULL)
+		return (NULL);
+	token_count = count_tokens(s, c);
+	tokens = malloc(sizeof(char *) * (token_count + 1));
 	if (!tokens)
 		return (NULL);
 	start = 0;
 	i = 0;
-	while (i < word_count)
+	while (i < token_count)
 	{
-		tokens[i] = ft_getword(s, c, &start);
+		tokens[i] = get_word(s, c, &start);
 		if (!tokens[i])
 		{
-			ft_freearr(tokens, i);
+			free_split(tokens);
 			return (NULL);
 		}
 		i++;

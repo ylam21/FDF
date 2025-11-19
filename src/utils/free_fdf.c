@@ -6,7 +6,7 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/16 23:55:06 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/18 18:03:00 by omaly            ###   ########.fr       */
+/*   Updated: 2025/11/19 10:52:48 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ void	free_fdf(t_fdf *fdf)
 {
 	if (fdf == NULL)
 		return ;
-	free(fdf->map.filename);
+	if (fdf->map.filename)
+		free(fdf->map.filename);
 	free_scene(fdf->scene, fdf->map.rows);
 	free_mlx(fdf);
 }

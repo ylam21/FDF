@@ -6,7 +6,7 @@
 #    By: omaly <omaly@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/18 19:25:08 by omaly             #+#    #+#              #
-#    Updated: 2025/11/18 18:55:01 by omaly            ###   ########.fr        #
+#    Updated: 2025/11/19 11:38:52 by omaly            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,6 @@ RM = rm -rf
 # Source files
 MAIN_SRCS =	$(SRC_DIR)/main.c \
 			$(SRC_DIR)/has_fdf_extension.c \
-			$(SRC_DIR)/error.c \
 			$(SRC_DIR)/allocate_scene.c
 
 GNL_SRCS :=	$(SRC_DIR)/utils/gnl/get_next_line.c \
@@ -57,10 +56,10 @@ INIT_SRCS	:=	$(SRC_DIR)/init/camera_defaults_init.c \
 UTILS_SRCS	:=	$(SRC_DIR)/utils/is_whitespace.c \
 				$(SRC_DIR)/utils/count_words.c \
 				$(SRC_DIR)/utils/fdf_atoi.c \
-				$(SRC_DIR)/utils/free_split.c \
 				$(SRC_DIR)/utils/is_sign.c \
 				$(SRC_DIR)/utils/hex_to_int.c \
-				$(SRC_DIR)/utils/free_fdf.c \
+				$(SRC_DIR)/utils/print_error.c \
+				$(SRC_DIR)/utils/free_fdf.c
 
 SRCS = $(MAIN_SRCS) $(PARSER_SRCS) $(INIT_SRCS) $(UTILS_SRCS) $(RENDERER_SRCS) $(PROJECTOR_SRCS) $(GNL_SRCS)
 

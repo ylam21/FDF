@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   print_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 11:45:50 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/18 17:01:13 by omaly            ###   ########.fr       */
+/*   Updated: 2025/11/19 11:15:58 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/fdf.h"
+#include "../../includes/fdf.h"
 
-void	exit_error(char *error_msg)
+int	print_error(char *error_msg)
 {
 	ft_putstr_fd(error_msg, 2);
-	exit(EXIT_FAILURE);
+	return (EXIT_FAILURE);
 }

@@ -6,7 +6,7 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 15:36:34 by omaly             #+#    #+#             */
-/*   Updated: 2025/09/19 18:13:06 by omaly            ###   ########.fr       */
+/*   Updated: 2025/11/19 11:26:12 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@ size_t	ft_strlen(const char *s)
 	size_t	len;
 	size_t	i;
 
+	if (s == NULL)
+		return 0;
 	i = 0;
 	len = 0;
-	while (s && s[i] != '\0')
+	while (s[i] != '\0')
 	{
 		len++;
 		i++;
