@@ -6,7 +6,7 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 19:20:43 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/19 17:09:20 by omaly            ###   ########.fr       */
+/*   Updated: 2025/11/20 16:57:55 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <stdlib.h>
 # include "structs.h"
 # include "error.h"
+# include "hooks.h"
 # include "init.h"
 # include "parser.h"
 # include "projector.h"

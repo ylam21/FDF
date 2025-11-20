@@ -6,17 +6,11 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 19:35:52 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/19 17:28:32 by omaly            ###   ########.fr       */
+/*   Updated: 2025/11/20 17:03:27 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
-
-int	close_window(t_fdf *fdf)
-{
-	mlx_loop_end(fdf->mlx);
-	return (0);
-}
 
 int	main(int argc, char **argv)
 {
@@ -39,7 +33,9 @@ int	main(int argc, char **argv)
 	if (parse_map(fdf.scene, fdf.map) != 0)
 		return (free_fdf(&fdf), print_error(ERROR_PARSE));
 	render_scene(&fdf, fdf.map);
-	mlx_hook(fdf.win, 17, 0, close_window, &fdf);
+	mlx_hook(fdf.win, COPY_DESTRYNOTIFY, COPY_NOEVENTMASK, &close_window,
+		&fdf);
+	mlx_hook(fdf.win, COPY_KEYPRESS, (1L << 0), &escape_press, &fdf);
 	mlx_loop(fdf.mlx);
 	free_fdf(&fdf);
 	return (EXIT_SUCCESS);

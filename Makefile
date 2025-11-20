@@ -6,7 +6,7 @@
 #    By: omaly <omaly@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/18 19:25:08 by omaly             #+#    #+#              #
-#    Updated: 2025/11/19 11:38:52 by omaly            ###   ########.fr        #
+#    Updated: 2025/11/20 16:57:29 by omaly            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ RM = rm -rf
 # Source files
 MAIN_SRCS =	$(SRC_DIR)/main.c \
 			$(SRC_DIR)/has_fdf_extension.c \
+			$(SRC_DIR)/hooks.c \
 			$(SRC_DIR)/allocate_scene.c
 
 GNL_SRCS :=	$(SRC_DIR)/utils/gnl/get_next_line.c \
