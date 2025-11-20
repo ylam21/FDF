@@ -6,7 +6,7 @@
 /*   By: omaly <omaly@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 16:44:23 by omaly             #+#    #+#             */
-/*   Updated: 2025/11/19 17:06:26 by omaly            ###   ########.fr       */
+/*   Updated: 2025/11/20 14:52:16 by omaly            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	calculate_zoom(unsigned int window_size_x, unsigned int window_size_y,
 	float	zoom_y;
 	float	base_zoom;
 
+	base_zoom = 1;
 	zoom_x = window_size_x / cols;
 	zoom_y = window_size_y / rows;
 	if (zoom_x <= zoom_y)
